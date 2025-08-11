@@ -2,7 +2,6 @@
 
 A professional dark-themed business dashboard built with **Next.js 14** and **Tailwind CSS**, designed specifically for business professionals to access essential tools, insights, and data with speed and clarity.
 
-![Business Dashboard Preview](public/dashboard-preview.png)
 
 ## Features
 - **Dark Theme Only** – Elegant, minimal, and eye-friendly design.
