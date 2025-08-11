@@ -7,10 +7,10 @@ export default function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
   return (
-    <div className="min-h-screen flex bg-gray-900 text-white">
+    <div className="min-h-screen  flex bg-gray-900 text-white">
       {/* Sidebar */}
       <aside
-        className={`bg-gray-800 transition-all duration-300 ease-in-out 
+        className={`bg-gray-800 w-[15%] p-4 transition-all duration-300 ease-in-out 
           ${sidebarOpen ? "w-64" : "w-16"} flex flex-col`}
       >
         {/* Sidebar Header */}
@@ -39,7 +39,7 @@ export default function Dashboard() {
         {/* Links */}
         <nav className="flex-1 p-2 space-y-2">
           <Link
-            href="/dashboard"
+            href="/"
             className="flex items-center gap-3 p-2 rounded hover:bg-gray-700 transition"
           >
             {/* Home Icon */}
@@ -48,22 +48,11 @@ export default function Dashboard() {
             </svg>
             {sidebarOpen && "Dashboard"}
           </Link>
-
-          <Link
-            href="/about"
-            className="flex items-center gap-3 p-2 rounded hover:bg-gray-700 transition"
-          >
-            {/* Info Icon */}
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 110 20 10 10 0 010-20z" />
-            </svg>
-            {sidebarOpen && "About"}
-          </Link>
         </nav>
       </aside>
 
       {/* Main content */}
-       <main className="min-h-screen bg-gray-900 text-white px-6 py-10">
+       <main className="min-h-screen bg-gray-900 text-white px-6 py-10 w-full">
       {/* Header */}
       <header className="mb-8">
         <h1 className="text-3xl font-bold">Businessmen Hub</h1>
