@@ -1,103 +1,111 @@
-import Image from "next/image";
+// src/app/dashboard/page.jsx
+"use client";
+import { useState } from "react";
+import Link from "next/link";
 
-export default function Home() {
+export default function Dashboard() {
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="min-h-screen flex bg-gray-900 text-white">
+      {/* Sidebar */}
+      <aside
+        className={`bg-gray-800 transition-all duration-300 ease-in-out 
+          ${sidebarOpen ? "w-64" : "w-16"} flex flex-col`}
+      >
+        {/* Sidebar Header */}
+        <div className="flex items-center justify-between p-4 border-b border-gray-700">
+          <span className={`font-bold text-lg transition-all ${!sidebarOpen && "hidden"}`}>
+            Business Panel
+          </span>
+          <button
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            className="p-1 rounded hover:bg-gray-700"
+            aria-label="Toggle Sidebar"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            {/* Simple Hamburger Icon */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-6 h-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* Links */}
+        <nav className="flex-1 p-2 space-y-2">
+          <Link
+            href="/dashboard"
+            className="flex items-center gap-3 p-2 rounded hover:bg-gray-700 transition"
+          >
+            {/* Home Icon */}
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7m-9 2v10" />
+            </svg>
+            {sidebarOpen && "Dashboard"}
+          </Link>
+
+          <Link
+            href="/about"
+            className="flex items-center gap-3 p-2 rounded hover:bg-gray-700 transition"
+          >
+            {/* Info Icon */}
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 110 20 10 10 0 010-20z" />
+            </svg>
+            {sidebarOpen && "About"}
+          </Link>
+        </nav>
+      </aside>
+
+      {/* Main content */}
+       <main className="min-h-screen bg-gray-900 text-white px-6 py-10">
+      {/* Header */}
+      <header className="mb-8">
+        <h1 className="text-3xl font-bold">Businessmen Hub</h1>
+        <p className="text-gray-400 mt-2 max-w-2xl">
+          Welcome to the ultimate hub for business professionals — gain insights, track performance, 
+          and make informed decisions in one place.
+        </p>
+      </header>
+
+      {/* Stats Section */}
+      <section className="grid gap-6 md:grid-cols-3">
+        <div className="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition">
+          <h2 className="text-lg font-semibold">Monthly Revenue</h2>
+          <p className="mt-2 text-2xl font-bold">$82,450</p>
+          <p className="text-green-400 text-sm mt-1">▲ 12% from last month</p>
+        </div>
+
+        <div className="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition">
+          <h2 className="text-lg font-semibold">Active Clients</h2>
+          <p className="mt-2 text-2xl font-bold">152</p>
+          <p className="text-green-400 text-sm mt-1">▲ 8% growth</p>
+        </div>
+
+        <div className="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition">
+          <h2 className="text-lg font-semibold">Pending Deals</h2>
+          <p className="mt-2 text-2xl font-bold">19</p>
+          <p className="text-yellow-400 text-sm mt-1">● In negotiation</p>
+        </div>
+      </section>
+
+      {/* Insights */}
+      <section className="mt-10">
+        <h2 className="text-xl font-bold mb-4">Market Insights</h2>
+        <div className="bg-gray-800 p-6 rounded-xl shadow-lg">
+          <ul className="space-y-3 list-disc list-inside text-gray-300">
+            <li>Emerging trends in fintech and AI adoption</li>
+            <li>Top 5 investment sectors for 2025</li>
+            <li>Networking events in major business hubs</li>
+          </ul>
+        </div>
+      </section>
+    </main>
     </div>
   );
 }
