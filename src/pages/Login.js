@@ -1,4 +1,4 @@
-import { setAuthToken } from "@/features/auth.features";
+import { setAuthToken } from "../features/Auth.features.js";
 
 export default function LoginPage() {
   const handleLogin = async () => {
